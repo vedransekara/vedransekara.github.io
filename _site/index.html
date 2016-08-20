@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+  		<title>VedranSekara</title>
+  		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  		<meta name="description" content="" />
+  		<meta name="keywords" content="" />
+  		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  		<script src="/js/jquery.min.js"></script>
+  		<script src="/js/jquery.poptrox.min.js"></script>
+  		<script src="/js/skel.min.js"></script>
+  		<script src="/js/init.js"></script>
+  		<noscript>
+  			<link rel="stylesheet" href="/css/skel.css" />
+  			<link rel="stylesheet" href="/css/style.css" />
+  			<link rel="stylesheet" href="/css/style-xlarge.css" />
+  		</noscript>
+  		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
+  	</head>
+
+	<body id="top">
+
+      <header id="header">
+          <a href="/index.html" class="image avatar"><img src="/images/logo.png" alt="" /></a>
+          <h1><strong>Vedran Sekara</strong>, Data Scientist.<br />
+          Doing Math, Physics <br /> & other amazing stuff.</h1>
+          
+          <p>&nbsp</p>
+          
+          <h1><strong>
+          <a href="/index.html"> Home </a>
+          </strong></h1>
+          
+          <h1><strong>
+          <a href="/about"> About </a>
+          </strong></h1>
+          
+          <!--
+          <h1><strong>
+          <a href="/media"> Media </a>
+          </strong></h1>
+		  -->
+
+          <h1><strong>
+          <a href="https://scholar.google.dk/citations?user=u_dmO4UAAAAJ&hl=en"> Publications </a>
+          </strong></h1>
+      </header>
+
+        <!-- Main -->
+<div id="main">
+    <section>
+        
+            <header class="major">
+                <h2>Game Of Thrones network visualization</h2>
+                <p class="post-meta">Jun 28, 2016</p>
+            </header>
+
+            <section>
+                <p>I was watching the season finale of Game of Thrones the other day and wondered—with so many characters in the series what does the interaction network look like?
+Well, as it turns out I was not the first person to get this thought. In fact A. Beveridge and J. Shan read through <em>Storm Of Swords</em> (third book in the series) and mapped all the interactions between characters, and released the data. You can read more about their cool project <a href="https://www.macalester.edu/~abeverid/thrones.html">here</a>. They are, further, planning to release data regarding the others books as well.</p>
+
+<p>While A. Beveridge and J. Shan used <a href="https://gephi.org/">Gephi</a> to draw their network I wanted to do something more interactive, so chose to do it in <a href="https://d3js.org/">D3js</a>. I you haven’t already heard of D3 you should definitely check it out! There are many great example on the D3 homepage, and I especially like Bostok force-directed network visualization [see <a href="http://bl.ocks.org/mbostock/4062045">here</a>]. Being very lazy, I borrowed the code <a href="https://bl.ocks.org/mbostock/4062045">from here</a>, wrote a python script that modified the Game Of Thrones data into the correct format, scaled node-size according to their degree (number if connections), and assigned nice colors to each person. The result is visible below. The plot is interactive meaning you drag nodes and if you hover your cursor over a node it will display the name of the character.</p>
+
+<body>
+  <div id="got_network"></div>
+<style>
+
+div.got_network {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.node {
+  stroke: black;
+  stroke-width: 2px;
+}
+
+  .node:hover {
+    opacity: 0.8;
+    stroke: white;
+  }
+
+.link {
+  stroke: black;
+  stroke-opacity: .5;
+}
+</style>
+</body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+var width = 800,
+    height = 640;
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(50)
+    .gravity(0.05)
+    .size([width, height]);
+
+var svg = d3.select("div#got_network").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("/data/got.json", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", function(d) { return Math.sqrt(d.size)*2.5; })
+      .style("fill", function(d) { return d.color; })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+</script>
+
+
+            </section>
+        
+    </section>
+    <section>
+        <div class="row">
+            
+
+                <article class="6u 12u(small)">
+                    <header>
+                        <h2><a href="/2015/09/18/KVANT.html">On the cover of KVANT</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2015/kv153-forside.png" class="fit image" /> While finalizing my PhD I was asked, alongside Sune Lehmann, to author a popular article about networks by the magazine Kvant (danish journal for physics and astronomy). We wrote and submitted the <a href="http://www.kvant.dk/issue.php?n=3&amp;y=2015">piece</a> and were fairly confident in our work. Nonetheless we were surprised when we were contacted by the editor who asked us for permission to use one of my figures for the cover!  This is my first cover, and I gotta say, it feels awesome, next stop …. Nature :)</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2015/09/18/KVANT.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u$ 12u(small)">
+                    <header>
+                        <h2><a href="/2015/05/13/nyc_heartbeat.html">NYC Taxi - Heartbeat of NYC</a></h2>
+                    </header>
+                    <section>
+                        <p>Have you ever wondered which areas of New York City are the most popular? You need not worry anymore, this little movie will answer your questions. The video shows the dynamics of  pick-ups and drop-offs within a representative week. It is interesting to see how the popularity of areas changes over the course of a day, and how certain areas attract more attention during nighttime. To me the circadian patterns resembles a heartbeat.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2015/05/13/nyc_heartbeat.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u 12u(small)">
+                    <header>
+                        <h2><a href="/2015/05/07/nyc_statistics.html">NYC Taxi - Statistics</a></h2>
+                    </header>
+                    <section>
+                        <p>One of the most iconic sights in New York are its <a title="Yellow cabs" href="http://upload.wikimedia.org/wikipedia/commons/0/07/Yellow_cabs_2.jpg">Yellow cabs</a>. They are ubiquitous and an important lifeline that tie the city and its inhabitants together. Understanding how cabs move around can give us new insights into how people travel within the city, how people use the city, and which neighborhoods are popular.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2015/05/07/nyc_statistics.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u$ 12u(small)">
+                    <header>
+                        <h2><a href="/2015/02/01/next_big_thing.html">The next big thing....</a></h2>
+                    </header>
+                    <section>
+                        <p>Is just around the corner!
+We have some cool results that hopefully  should be published soon. Until then here are two teaser pics.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2015/02/01/next_big_thing.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u 12u(small)">
+                    <header>
+                        <h2><a href="/2014/06/29/world_cup.html">World Cup 2014</a></h2>
+                    </header>
+                    <section>
+                        <p>Since I as a kid watched my first world cup (1994), I have been hooked on football (or soccer as the Americans call it). Back then l I remember that almost every player used to wear <a title="Copa mundial" href="http://www.adidas.com/us/product/mens-soccer-copa-mundial-fg-cleats/10034?cid=015110">Adidas Copa Mundials</a> - a stylish, yet simple black leather boots with 3 white stripes.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2014/06/29/world_cup.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u$ 12u(small)">
+                    <header>
+                        <h2><a href="/2014/03/21/forbes.html">Featured in Forbes</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2014/timenets_sensible.png" class="fit image" />
+Ok, I know that I’m a bit late in posting this, but results form one of my papers [<a title="Measuring large-scale social networks with high resolution" href="http://arxiv.org/abs/1401.7233">link</a>] was featured in <a title="Forbes-link" href="http://www.forbes.com/sites/adamtanner/2014/03/12/starting-today-jealous-lovers-can-buy-nsa-like-monitoring-powers/">Forbes Magazine</a>.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2014/03/21/forbes.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u 12u(small)">
+                    <header>
+                        <h2><a href="/2014/01/31/another_paper.html">Another Paper!</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2014/face_blue.png" class="fit image" /> 
+Things are moving fast now.
+We just uploaded another paper to ArXiv. Check it out!
+<a title="Paper" href="http://arxiv.org/abs/1401.7233"><strong>Measuring large-scale social networks with high resolution</strong></a></p>
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2014/01/31/another_paper.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u$ 12u(small)">
+                    <header>
+                        <h2><a href="/2014/01/24/paper.html">Paper!</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2014/networks.png" class="fit image" /> Just submitted a paper - Wohoo!
+Meanwhile until it is published you can find it on <a title="Paper" href="http://arxiv.org/abs/1401.5836">arXiv.</a>
+The paper investigates usability of the Bluetooth sensor is as a proxy for real life face-to-face interactions.
+You can learn more about the data on the <a title="SensibleDTU" href="https://www.sensible.dtu.dk/">SensibleDTU</a> homepage.</p>
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2014/01/24/paper.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u 12u(small)">
+                    <header>
+                        <h2><a href="/2013/10/09/talk_KU.html">Talk @ KU (4th Dec)</a></h2>
+                    </header>
+                    <section>
+                        <p>I will be giving a talk at the Niels Bohr Institute on December 4th. Topic will be “Social Contacts and Commnities”.  It is based on the results and finding from the <a title="SensibleDTU" href="http://sensible.dtu.dk">SensibleDTU</a> project.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2013/10/09/talk_KU.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u$ 12u(small)">
+                    <header>
+                        <h2><a href="/2013/08/28/bluetooth_network.html">Bluetooth Network</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2013/bluetooth_video_scr.png" class="fit image" />
+How do we as humans interact over the course of a day? The video shows proximity interactions for student participating in the SensibleDTU project for a randomly chosen 24-hour interval.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2013/08/28/bluetooth_network.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+
+                <article class="6u 12u(small)">
+                    <header>
+                        <h2><a href="/2013/07/29/sensibleDTU.html">SensibleDTU</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2013/dtu_pollock2.png" class="fit image" /></p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2013/07/29/sensibleDTU.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            
+        </div>
+    </section>
+</div>
+
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+
+              
+              <li>
+                <a href="https://github.com/vedransekara" class="icon fa-github">
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+              
+
+              
+              <li>
+                <a href="https://twitter.com/vedransekara" class="icon fa-twitter">
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+              
+
+              
+              <li>
+                <a href="https://linkedin.com/in/vedran-sekara-160284a2" class="icon fa-linkedin">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+              
+
+              
+
+              
+
+              
+
+              
+              <li>
+                <a href="mailto:vedransekara@gmail.com" class="icon fa-envelope-o">
+                  <span class="label">Email</span>
+                </a>
+              </li>
+              
+            </ul>
+            <ul class="copyright">
+                <li>&copy;vedransekara</li>
+            </ul>
+        </footer>
+
+	</body>
+</html>

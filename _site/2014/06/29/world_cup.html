@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+  		<title>VedranSekara</title>
+  		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  		<meta name="description" content="" />
+  		<meta name="keywords" content="" />
+  		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  		<script src="/js/jquery.min.js"></script>
+  		<script src="/js/jquery.poptrox.min.js"></script>
+  		<script src="/js/skel.min.js"></script>
+  		<script src="/js/init.js"></script>
+  		<noscript>
+  			<link rel="stylesheet" href="/css/skel.css" />
+  			<link rel="stylesheet" href="/css/style.css" />
+  			<link rel="stylesheet" href="/css/style-xlarge.css" />
+  		</noscript>
+  		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
+  	</head>
+
+	<body id="top">
+
+      <header id="header">
+          <a href="/index.html" class="image avatar"><img src="/images/logo.png" alt="" /></a>
+          <h1><strong>Vedran Sekara</strong>, Data Scientist.<br />
+          Doing Math, Physics <br /> & other amazing stuff.</h1>
+          
+          <p>&nbsp</p>
+          
+          <h1><strong>
+          <a href="/index.html"> Home </a>
+          </strong></h1>
+          
+          <h1><strong>
+          <a href="/about"> About </a>
+          </strong></h1>
+          
+          <!--
+          <h1><strong>
+          <a href="/media"> Media </a>
+          </strong></h1>
+		  -->
+
+          <h1><strong>
+          <a href="https://scholar.google.dk/citations?user=u_dmO4UAAAAJ&hl=en"> Publications </a>
+          </strong></h1>
+      </header>
+
+        <div id="main">
+    <article>
+        <header class="major">
+            <h2 class="post-title">World Cup 2014</h2>
+                <p class="post-meta">Jun 29, 2014</p>
+        </header>
+
+        <section>
+            <p>Since I as a kid watched my first world cup (1994), I have been hooked on football (or soccer as the Americans call it). Back then l I remember that almost every player used to wear <a title="Copa mundial" href="http://www.adidas.com/us/product/mens-soccer-copa-mundial-fg-cleats/10034?cid=015110">Adidas Copa Mundials</a> - a stylish, yet simple black leather boots with 3 white stripes.</p>
+
+<p>However, everything changed at the 1998 word cup, when Nike equipped Ronaldo (no, not Christiano Ronaldo, I’m referring to the original one) with <a title="Mercurial Vapor" href="http://cdn.sneakerreport.com/assets/Mercurial-1998-2013-2up_large-copy.jpg">Mercurial Vapor</a>, silver and navy colored boots with a golden swoosh symbol. Since then, brands like Adidas, Nike, Puma, and others have fought for public attention by equipping players with increasingly more colorful boots. Culminating in Puma releasing their 2014 <a title="evospeed" href="https://www.puma.com/footballclub/global/en/bootlab-tricks/evospeed-tricks">evospeed boots</a>, with the two shoes having different colors!</p>
+
+<p>Now, since I am both a football fan and an aspiring data-scientist I wanted to do some statistics regarding brands at the world cup, with a special focus on football boots! But first lets start with the jerseys. Each brand tries to promotes itself by sponsoring countries with individually designed jerseys, where the <a title="ghana (home)" href="http://www.uksoccershop.com/images/ghana-2014-world-cup-home-football-kit.jpg">Ghana (home)</a> and the <a title="US (away)" href="http://www.ussoccerplayers.com/images/2014/04/usmnt-away-shirt-2014-world-cup-soccer.jpg">US (away)</a> jerseys are some of the coolest this year (according to me). Below I have plotted the brand statistics, i.e. how many national teams each brand supports</p>
+
+<p><a href="/images/2014/shirt_brands.png"><img src="/images/2014/shirt_brands.png" alt="shirt_brands" width="700" height="569" /></a></p>
+
+<p>As suspected the big 3: Adidas, Nike, and Puma support a majority of the teams. But since players are free to choose their own boots, or rather the brand of their boots, will this look different for boots? This question is very hard to answer, since I need to know what kind of boots each player wears, and with 16 teams x 23 players each this results in 368 pairs of feet. Thus I instead focus on the question: which boots to goals scorers wear? And thanks to ESPN this question is much easier to answer since they have replays of all goals scores at the world cup (Yes I literally watched all goals in super slow motion and noted down the brand of boots). The figure below shows how many goals were scored during the group stage with each type of  brand. Nike is leading with more than 18 goals! Bear in mind that I did not correct for no of players equipped with Nike boots.</p>
+
+<p><a href="/images/2014/goals_per_brand.png"><img src="/images/2014/goals_per_brand.png?w=700" alt="goals_per_brand" width="700" height="561" /></a></p>
+
+<p>But we can dig deeper, since I also labeled all goals, i.e. whether they were regular goals, headers, free-kicks/penalties or own goals. Thus, below we see the distribution of goals scored during the group stage.<a href="/images/2014/goal_type.png"><img src="/images/2014/goal_type.png" alt="goal_type" width="700" height="556" /></a></p>
+
+<p>So which boots score which goals? Well, investigating further shows that Nike boots dominate regular and header goals, while Adidas boots score more on penalties/free-kicks. Further, it seems that Nike boots are preferred by players who score own-goals.</p>
+
+<p><a href="/images/2014/goal_types.png"><img src="/images/2014/goal_types.png?w=700" alt="goal_types" width="700" height="169" /></a>
+Stay tuned for more world cup statistics.</p>
+
+        </section>
+        
+        <hr>
+
+        <footer>
+            <div class="row">
+            
+            
+                <article class="6u 12u(small) excerpt">
+                    <header>
+                        <h2><a href="/2014/03/21/forbes.html">Featured in Forbes</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2014/timenets_sensible.png" class="fit image" />
+Ok, I know that I’m a bit late in posting this, but results form one of my papers [<a title="Measuring large-scale social networks with high resolution" href="http://arxiv.org/abs/1401.7233">link</a>] was featured in <a title="Forbes-link" href="http://www.forbes.com/sites/adamtanner/2014/03/12/starting-today-jealous-lovers-can-buy-nsa-like-monitoring-powers/">Forbes Magazine</a>.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2014/03/21/forbes.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+            
+            
+            
+            
+                <article class="6u$ 12u(small) excerpt f-right">
+                    <header>
+                        <h2><a href="/2015/02/01/next_big_thing.html">The next big thing....</a></h2>
+                    </header>
+                    <section>
+                        <p>Is just around the corner!
+We have some cool results that hopefully  should be published soon. Until then here are two teaser pics.</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2015/02/01/next_big_thing.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+            
+            </div>
+        </footer>
+
+    </article>
+
+</div>
+
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+
+              
+              <li>
+                <a href="https://github.com/vedransekara" class="icon fa-github">
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+              
+
+              
+              <li>
+                <a href="https://twitter.com/vedransekara" class="icon fa-twitter">
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+              
+
+              
+              <li>
+                <a href="https://linkedin.com/in/vedran-sekara-160284a2" class="icon fa-linkedin">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+              
+
+              
+
+              
+
+              
+
+              
+              <li>
+                <a href="mailto:vedransekara@gmail.com" class="icon fa-envelope-o">
+                  <span class="label">Email</span>
+                </a>
+              </li>
+              
+            </ul>
+            <ul class="copyright">
+                <li>&copy;vedransekara</li>
+            </ul>
+        </footer>
+
+	</body>
+</html>

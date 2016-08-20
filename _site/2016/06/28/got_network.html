@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+  		<title>VedranSekara</title>
+  		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  		<meta name="description" content="" />
+  		<meta name="keywords" content="" />
+  		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  		<script src="/js/jquery.min.js"></script>
+  		<script src="/js/jquery.poptrox.min.js"></script>
+  		<script src="/js/skel.min.js"></script>
+  		<script src="/js/init.js"></script>
+  		<noscript>
+  			<link rel="stylesheet" href="/css/skel.css" />
+  			<link rel="stylesheet" href="/css/style.css" />
+  			<link rel="stylesheet" href="/css/style-xlarge.css" />
+  		</noscript>
+  		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
+  	</head>
+
+	<body id="top">
+
+      <header id="header">
+          <a href="/index.html" class="image avatar"><img src="/images/logo.png" alt="" /></a>
+          <h1><strong>Vedran Sekara</strong>, Data Scientist.<br />
+          Doing Math, Physics <br /> & other amazing stuff.</h1>
+          
+          <p>&nbsp</p>
+          
+          <h1><strong>
+          <a href="/index.html"> Home </a>
+          </strong></h1>
+          
+          <h1><strong>
+          <a href="/about"> About </a>
+          </strong></h1>
+          
+          <!--
+          <h1><strong>
+          <a href="/media"> Media </a>
+          </strong></h1>
+		  -->
+
+          <h1><strong>
+          <a href="https://scholar.google.dk/citations?user=u_dmO4UAAAAJ&hl=en"> Publications </a>
+          </strong></h1>
+      </header>
+
+        <div id="main">
+    <article>
+        <header class="major">
+            <h2 class="post-title">Game Of Thrones network visualization</h2>
+                <p class="post-meta">Jun 28, 2016</p>
+        </header>
+
+        <section>
+            <p>I was watching the season finale of Game of Thrones the other day and wondered—with so many characters in the series what does the interaction network look like?
+Well, as it turns out I was not the first person to get this thought. In fact A. Beveridge and J. Shan read through <em>Storm Of Swords</em> (third book in the series) and mapped all the interactions between characters, and released the data. You can read more about their cool project <a href="https://www.macalester.edu/~abeverid/thrones.html">here</a>. They are, further, planning to release data regarding the others books as well.</p>
+
+<p>While A. Beveridge and J. Shan used <a href="https://gephi.org/">Gephi</a> to draw their network I wanted to do something more interactive, so chose to do it in <a href="https://d3js.org/">D3js</a>. I you haven’t already heard of D3 you should definitely check it out! There are many great example on the D3 homepage, and I especially like Bostok force-directed network visualization [see <a href="http://bl.ocks.org/mbostock/4062045">here</a>]. Being very lazy, I borrowed the code <a href="https://bl.ocks.org/mbostock/4062045">from here</a>, wrote a python script that modified the Game Of Thrones data into the correct format, scaled node-size according to their degree (number if connections), and assigned nice colors to each person. The result is visible below. The plot is interactive meaning you drag nodes and if you hover your cursor over a node it will display the name of the character.</p>
+
+<body>
+  <div id="got_network"></div>
+<style>
+
+div.got_network {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.node {
+  stroke: black;
+  stroke-width: 2px;
+}
+
+  .node:hover {
+    opacity: 0.8;
+    stroke: white;
+  }
+
+.link {
+  stroke: black;
+  stroke-opacity: .5;
+}
+</style>
+</body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+var width = 800,
+    height = 640;
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(50)
+    .gravity(0.05)
+    .size([width, height]);
+
+var svg = d3.select("div#got_network").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("/data/got.json", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", function(d) { return Math.sqrt(d.size)*2.5; })
+      .style("fill", function(d) { return d.color; })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+</script>
+
+
+        </section>
+        
+        <hr>
+
+        <footer>
+            <div class="row">
+            
+            
+                <article class="6u 12u(small) excerpt">
+                    <header>
+                        <h2><a href="/2015/09/18/KVANT.html">On the cover of KVANT</a></h2>
+                    </header>
+                    <section>
+                        <p><img src="/images/2015/kv153-forside.png" class="fit image" /> While finalizing my PhD I was asked, alongside Sune Lehmann, to author a popular article about networks by the magazine Kvant (danish journal for physics and astronomy). We wrote and submitted the <a href="http://www.kvant.dk/issue.php?n=3&amp;y=2015">piece</a> and were fairly confident in our work. Nonetheless we were surprised when we were contacted by the editor who asked us for permission to use one of my figures for the cover!  This is my first cover, and I gotta say, it feels awesome, next stop …. Nature :)</p>
+
+
+                    </section>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="/2015/09/18/KVANT.html" class="button">Read More</a></li>
+                        </ul>
+                    </footer>
+                </article>
+            
+            
+            
+            </div>
+        </footer>
+
+    </article>
+
+</div>
+
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+
+              
+              <li>
+                <a href="https://github.com/vedransekara" class="icon fa-github">
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+              
+
+              
+              <li>
+                <a href="https://twitter.com/vedransekara" class="icon fa-twitter">
+                  <span class="label">Twitter</span>
+                </a>
+              </li>
+              
+
+              
+              <li>
+                <a href="https://linkedin.com/in/vedran-sekara-160284a2" class="icon fa-linkedin">
+                  <span class="label">LinkedIn</span>
+                </a>
+              </li>
+              
+
+              
+
+              
+
+              
+
+              
+              <li>
+                <a href="mailto:vedransekara@gmail.com" class="icon fa-envelope-o">
+                  <span class="label">Email</span>
+                </a>
+              </li>
+              
+            </ul>
+            <ul class="copyright">
+                <li>&copy;vedransekara</li>
+            </ul>
+        </footer>
+
+	</body>
+</html>
