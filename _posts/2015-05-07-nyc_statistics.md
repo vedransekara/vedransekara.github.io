@@ -27,8 +27,14 @@ Again we divide data into months and collapse trips within each month into a wee
 
 With this much data we can also look into locations from where it is easiest to catch a cab. Plotting 173 million data-points, however, is not informative, a better idea is to bin them. The figures below show 2D hexagonal histograms for the pickup locations of taxi trips divided into afternoons (2pm-9pm) and nights-rides (9pm-3am) respectively.  Independent of the time of day there always seems to an abundance of cabs in Midtown. During nighttime some differences arise, and more people are picked up in the West Village, Little Italy and Nolita — clearly indicating party districts.
 
-Afternoon                  |  Night
-:-------------------------:|:-------------------------:
-<a href="/images/2015/nyc_afternoon.png"><img style="border:2px solid #000000;" src="/images/2015/nyc_afternoon.png" alt="NYC_afternoon" width="250" height="499" />  |  <a href="/images/nyc_night.png"><img style="border:2px solid #000000;" src="/images/2015/nyc_night.png" alt="NYC_night" width="250" height="499" /> 
+<table style="width:100%">
+    <td>
+    	<a href="/images/2015/nyc_afternoon.png"><img style="border:2px solid #000000;" src="/images/2015/nyc_afternoon.png" alt="NYC_afternoon" width="250" height="499"> </a>
+    </td>
+    <td>
+    	<a href="/images/nyc_night.png"><img style="border:2px solid #000000;" src="/images/2015/nyc_night.png" alt="NYC_night" width="250" height="499" > </a>
+    </td>
+</table>
+
 
 This is a work in progress, and there is more to come!
