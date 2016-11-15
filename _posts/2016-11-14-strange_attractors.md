@@ -12,7 +12,7 @@ One thing lead to another and soon I found myself reading about other _strange a
 <iframe src="https://player.vimeo.com/video/191362527" width="500" height="500" frameborder="2" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </center>
 
-Below is an description of how I did it along with snippets of python code. 
+Below is a description of how I did it along with snippets of python code. 
 
 #### Rössler system
 The Rössler system is given by the equations:
@@ -121,7 +121,7 @@ y_{n+1} = \sin(bx_n) + d \cos(by_n)
 $$
 </font>
 
-Again, for certain parameter values it exhibits chaotic where it will abruptly jump around the state-space, so we are not going to plot the transitions as we did for the Rössler attractor. 
+Again, for certain parameter values it exhibits chaotic behavior where it will abruptly jump around the state-space, so we are not going to plot the transitions as we did for the Rössler attractor. 
 Instead we will only focus on the points it jumps to.
 The code is pretty similar to what we wrote above, so i wont go into detail. 
 
