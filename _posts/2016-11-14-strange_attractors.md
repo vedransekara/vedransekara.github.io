@@ -162,7 +162,7 @@ plt.savefig('clifford.png', dpi = 300, pad_inches = 0, bbox_inches = 'tight',fac
 plt.close()
 ```
 
-From here its just to rune the script and generate some _nice_ figures!
+From here its just to run the script and generate some _nice_ figures!
 The parameter values $$(a,b,c,d) = (-1.4,1.6,1.0,0.7)$$ generate the dynamics on far right attractor in the [top figure](vedransekara.github.io/images/2016/strange_attractors.png).
 
 Trying other parameters yields amazing results!
