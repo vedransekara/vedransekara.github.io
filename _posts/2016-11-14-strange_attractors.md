@@ -2,8 +2,8 @@
 layout: post
 title: Strange Attractors
 ---
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <img src="/images/2016/strange_attractors.png" class="fit image">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 This Sunday while surfing the web I came across a figure depicting the [Rössler attractor](https://en.wikipedia.org/wiki/R%C3%B6ssler_attractor) and while looking at it, it suddenly struck me that I have always seen it depicted from this specific angle. But what does it look like from other angles?
 Curious, I sat down, quickly wrote a python script to generate the dynamics, used [Matplotlib](http://matplotlib.org/) to plot the figure from multiple angles, and [ffmpeg](https://www.ffmpeg.org/) to aggregate them into an animation (see below).
@@ -17,7 +17,7 @@ Below is an description of how I did it along with snippets of python code.
 
 #### Rössler system
 The Rössler system is given by the equations:
-
+<span>
 <font color='black'>
 $$
 \begin{align}
@@ -27,6 +27,7 @@ $$
 \end{align}
 $$
 </font>
+</span>
 
 which for certain parameter values of $$a$$, $$b$$ and $$c$$ will exhibit chaotic behavior.
 I have chosen $$(a,b,c) = (0.1,0.1,14)$$.
@@ -112,13 +113,16 @@ plt.close()
 #### Clifford attractors
 
 This is a peculiar form of attractor given by the 2D-equation system:
-
+<span>
+<font color='black'>
 $$
 \begin{align}
 x_{n+1} = \sin(ay_n) + c \cos(ax_n)\\
 y_{n+1} = \sin(bx_n) + d \cos(by_n)
 \end{align}
 $$
+</font>
+</span>
 
 Again, for certain parameter values it exhibits chaotic where it will abruptly jump around the state-space, so we are not going to plot the transitions as we did for the Rössler attractor. 
 Instead we will only focus on the points it jumps to.
