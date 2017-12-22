@@ -3,7 +3,6 @@ layout: post
 title: Strange Attractors
 ---
 <img src="/images/2016/strange_attractors.png" class="fit image">
-
 This Sunday while surfing the web I came across a figure depicting the [Rössler attractor](https://en.wikipedia.org/wiki/R%C3%B6ssler_attractor) and while looking at it, it suddenly struck me that I have always seen it depicted from this specific angle. But what does it look like from other angles?
 Curious, I sat down, quickly wrote a python script to generate the dynamics, used [Matplotlib](http://matplotlib.org/) to plot the figure from multiple angles, and [ffmpeg](https://www.ffmpeg.org/) to aggregate them into an animation (see below).
 One thing lead to another and soon I found myself reading about other _strange attractors_, such as [Clifford attractors](http://paulbourke.net/fractals/clifford/), and writing code to generate the figures you see above. 
