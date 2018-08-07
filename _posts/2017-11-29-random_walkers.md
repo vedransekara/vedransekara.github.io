@@ -3,7 +3,6 @@ layout: post
 title: Random walk (art)
 ---
 <img src="/images/2017/random_walk_art.jpeg" class="fit image">
-
 Trying to kill some time on a 4-hour long train ride I played around with simulating random walk in two dimensions.
 Coloring each walker with it's own unique colors, the motion of individual walkers will more or less look like confused ants moving around on a piece of paper.
 Resembling the behavior illustrated below  -- see code below.
