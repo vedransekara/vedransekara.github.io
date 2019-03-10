@@ -3,7 +3,6 @@ layout: post
 title: My favourite papers of 2018
 ---
 <img src="/images/2018/2018-9.png" class="fit image">
-
 2018 has been a really exciting year, scientifically speaking a lot of new interesting studies have been published this year (so many that I have had a hard time keeping up with my to-read-list), and personally it has been a fruitful year where I was lucky to publish in [PNAS](https://www.pnas.org/content/115/50/12603.short) and [Nature Human Behaviour](https://www.nature.com/articles/s41562-018-0364-x).
 Here i have included my favorite scientific papers of 2018.
 
