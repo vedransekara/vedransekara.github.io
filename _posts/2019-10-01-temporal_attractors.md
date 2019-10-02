@@ -38,8 +38,6 @@ So lets change the parameters, however, to see the influence of each parameter w
 Also, lets add some color.
 the below gif shows what happens when the $$a$$ (top left), $$b$$ (top right), $$c$$ (bottom left), and $$d$$ (bottom right) parameters are varied.
 I love playing around with chaotic systems as the always produce great visualizations.
-
-s
 <center><img src="/images/2019/animation_color.gif" class="fit image"></center>
 
 
