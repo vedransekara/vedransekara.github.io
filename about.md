@@ -4,8 +4,7 @@ layout: post
 
 # About
 
-As a Research/Data Scientist I focus on modeling and understanding complex systems by utilizing high-resolution (big) data across multiple data-channels.
-Currently my work focuses on modeling, describing and predicting human behavior. I have a comprehensive knowledge of network science and machine learning. In addition, I am highly experienced in working with large multiplex datasets, be it behavioral traces collected via apps installed on smartphones, interactions between proteins within cells, scientific articles from the Web of Science, photos on Flickr, taxi rides in NYC, or articles on Wikipedia.
+Hi! I'm an assistant Professor at the [IT University of Copenhagen](https://nerds.itu.dk/) and a Principal Researcher & Machine Learning Lead at [UNICEF](https://www.unicef.org/innovation/Magicbox). My work focuses on modeling and understanding complex societal and algorithmic systems. Currently I work on modeling, describing and predicting human behavior, auditing algorithms, and looking into data representativeness of ML & AI systems. I have a comprehensive knowledge of network science, data science, and machine learning. In addition, I am highly experienced in working with large multiplex datasets, be it behavioral traces collected via apps installed on smartphones, mobility data from CDRs, interactions between proteins within cells, scientific articles from the Web of Science, photos on Flickr, economic data from the Bloomberg Terminal, taxi rides in NYC, articles on Wikipedia, and many others.
 
 I’m a PhD-graduate from the Department of Applied Mathematics and Computer Science at the Technical University of Denmark [[pdf](https://www.dropbox.com/s/xq21smyt3u7a9t9/2015_PhD_V.sekara.pdf?dl=0)].
 
