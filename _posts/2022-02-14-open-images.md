@@ -11,7 +11,7 @@ Understanding what is in these datasets, how they are collected, and how differe
 Inspired by the recent work of [Emily Bender et al.](https://dl.acm.org/doi/pdf/10.1145/3442188.3445922) and Kate Crawford's new book [_Atlas of AI_](https://yalebooks.yale.edu/book/9780300209570/atlas-ai) I decided to look at look at one popular dataset - the [Open Images Dataset](https://storage.googleapis.com/openimages/web/index.html).
 Open Images is a dataset similar to ImageNet, it contains approx. 9 million images, annotated with image-level labels, bounding boxes, segmentation masks, etc.
 
-(Research)[https://arxiv.org/abs/1711.08536] has already shown that Open Images has issues when it comes to where images are from, with more than 50% of images coming from just 4 countries (US, UK, France and Spain).
+[Research](https://arxiv.org/abs/1711.08536) has already shown that Open Images has issues when it comes to where images are from, with more than 50% of images coming from just 4 countries (US, UK, France and Spain).
 However, here I want to dig a bit deeper into the dataset itself.
 I'm not interested in where images are from, rather I want to know what they actually depict.
 For instance, the image above is a random sample of the banana class. 
