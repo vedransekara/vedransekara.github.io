@@ -39,8 +39,8 @@ If we dig further into the "Human x" categorie and plot a random subset of the i
 Its no wonder that 
 
 <center>
-<img src="/images/2022/Human_beard.png" class="fit image">
-<img src="/images/2022/Man.png" class="fit image">
+<img src="/images/2022/Human_beard.jpg" style="width:50%">
+<img src="/images/2022/Man.jpg" style="width:50%">
 </center>
 
 But that is not all. 
