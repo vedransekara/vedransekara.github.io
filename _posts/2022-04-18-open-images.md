@@ -60,7 +60,4 @@ This is comparable to the number of images labeled as _Book_, _Bus_, _Vegetable_
 <img src="/images/2022/weapon-label-comparison.png" class="fit image">
 
 It is an open question why our image recognition AI tools should be equally good at identifying books and fruit as weapons.
-*To summarize, do not assume that because a dataset is big, or has been used by many people / many academic papers, it is of good quality.
-Often datasets are constructed from easily scraped datasources.
-As such, many widely used big datasets contain significant biases and limitations.*
-To read more please check out Kate Crawford's book.
+### To summarize, do not assume that because a dataset is big, or has been used by many people / many academic papers, it is of good quality. Often datasets are constructed from easily scraped datasources. As such, many widely used big datasets contain significant biases and limitations. To read more please check out Kate Crawford's book.
