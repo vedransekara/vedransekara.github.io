@@ -43,4 +43,24 @@ If we dig further into the "Human x" categories and plot a random subset of the 
 </center>
 
 But that is not all. 
-There are other issues. To be continued...
+If we keep digging we eventually find other issues.
+For instance, the _Swimwear_ label mainly has images of skimpily dressed young women (as perceived through a male gaze).
+The label _Brassiere_ has the same issue. 
+However, the thing that surprised me the most is the existence of labels relating to weapons.
+This includes labels like: _Weapon_, _Rifle_, _Tank_, _Handgun_, and many others.
+Which raises the question: why are they even in this dataset?
+It is difficult to say why the developers of OpenImages chose to include these in the dataset.
+My guess is that the heavy involvement of DARPA, IARPA, and many other defense and military agencies in AI, and the money they have thrown into the development of AI tool for their purposes (e.g. facial recognition, etc.), has biased the sample towards weapons.
+
+Now, you might think, how big is this problem? 
+There cannot be that many images?
+If we look at the amount of images labeled with a weapon-category (_Weapon_, _Rifle_, _Tank_, _Handgun_, _Missile_, _Shotgun_, _Sword_, _Bow and arrow_, _Submarine_, _Bomb_) we find there 10.000 of them, a substantial number. 
+This is comparable to the number of images labeled as _Book_, _Bus_, _Vegetable_, and _Fruit_ (see below figure).
+
+<img src="/images/2022/weapon-label-comparison.png" class="fit image">
+
+It is an open question why our image recognition AI tools should be equally good at identifying books and fruit as weapons.
+*To summarize, do not assume that because a dataset is big, or has been used by many people / many academic papers, it is of good quality.
+Often datasets are constructed from easily scraped datasources.
+As such, many widely used big datasets contain significant biases and limitations.*
+To read more please check out Kate Crawford's book.
