@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CLimate futures
+title: Climate futures
 ---
 <img src="images/2022/world-climate.png" class="fit image">
 
