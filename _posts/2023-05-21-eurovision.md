@@ -24,7 +24,7 @@ The audience votes through SMS, by calling in, through the official app, or the 
 Basically, the audience is you and me, regular people, anybody can vote (although it costs to vote).
 To summarize, the jury is composed of professionals, while the audience is 'normal' people. 
 
-# Disagreement between the jury and audience
+## Disagreement between the jury and audience
 
 What I noticed this year (and partially also last year) is that the tastes of the jury and audience are starting to diverge.
 For instance, this year Croatia 🇭🇷 got only 11 points from the jury, but 112 from the audience. They were ranked 25th by the jury, but 7th by the audience.
@@ -33,7 +33,7 @@ Similarly, Spain 🇪🇸 got 95 points from the jury, but only 5 from the audie
 To understand this in more detail lets look at votes from the past 3 competitions (2021, 2022, 2023)
 Voting data comes from the [Eurovision world website](https://eurovisionworld.com/) (fan community) and allows us to unpack voting preferences between the jury and audience.
 
-# 2021
+## Data for 2021 competition
 <img src="/images/2023/rank-2021-votes.png" class="fit image">
 
 In 2021 there had a good agreement between the audience and jury votes.
@@ -47,13 +47,13 @@ Here, already some things stand out, the jury had Switzerland🇨🇭 as the bes
 Similarly, the jury ranked Italy🇮🇹 4th (which won the competition 🏆) while they were ranked 1st by the audience.
 But overall there was an respectable overlap between the rankings.
 
-# 2022
+## Data for 2022 competition
 <img src="/images/2023/rank-2022-votes.png" class="fit image">
 
 In 2022 the spearman correlation fell to R=0.38, meaning the jury and audience disagreed more on what constituted a 'good' song.
 In fact they only agreed on one country Spain 🇪🇸 (ranked 4th by both). The jury though the UK 🇬🇧 had the best song, while the audience voted for Ukraine🇺🇦.
 
-# 2023
+## Data for 2023 competition
 <img src="/images/2023/rank-2023-votes.png" class="fit image">
 For 2023 the correlation decreased even further, to R=0.25. (Remember R=0 means no agreement at all, i.e. rankings are random compared to each other).
 If jury and audience agree, countries will lie on the red line. However, we here see many countries lying on a line perpendicular to it.
@@ -66,7 +66,7 @@ Looking across the last 3 years (all the data we have) we see years that the the
 Maybe its time to rethink the voting at Eurovision? Maybe its time to remove the jury and go back to a fully democratic process (i.e. points are 100% awarded by the audience).
 In 1998-2000 Eurovision actually (experimented with this)[https://twitter.com/TAledavood/status/1658200092472426496], I'm not sure about the outcome of the experiment and why they reverted back to jury votes/points. 
 
-# What causes differences and future studies
+## What causes these differences and future studies
 It is unclear what has caused the difference between audience and jury to grow.
 One explanation could be that the populations have changed, i.e. what regular people think is a 'good song' and what musicians is a good song could have diverged.
 Another explanation could be that the size differences between the populations could cause these fluctuations. 
