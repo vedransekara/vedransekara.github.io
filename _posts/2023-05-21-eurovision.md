@@ -73,4 +73,4 @@ Another explanation could be that the size differences between the populations c
 For example, the jury consists of only 5 people, so an single (grumpy?) juror can easily influence the overall vote of the jury, potentially introducing a lot of noise.
 On the other hand, the audience potentially consists of millions of individuals, where the sheer number of people can 'average out' the noise.
 
-It could be interesting to model these effects, and look into how much noise thee is a jury votes, and possibly build a machine learning model to predict audience votes from different song characteristics.
+It could be interesting to model these effects, and look into how much noise thee is a jury votes, and possibly build a machine learning model to predict audience votes from different song characteristics. If I can convince one of my students, it could be a fun project.
