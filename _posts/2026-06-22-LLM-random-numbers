@@ -1,0 +1,69 @@
+---
+layout: post
+title: Silly post: Sampling random numbers with LLMs 
+---
+<img src="images/2026/pexels-emhopper-9163754.jpg" class="fit image">
+
+Last week I was writing some machine learning code and needed a random number seed to make results reproducible for testing purposes. 
+As I was picking a 'random number' (other than 42), I wondered: what would happen if I asked an LLM for a random number?
+It turns out, nothing good would come of that.
+_(I recall once reading an analysis about the random numbers people use across various Github repositories, but I cannot remember the authors behind that study anymore)._
+
+__TLDR; LLMs are really bad at picking random numbers!__
+This was also more stringently shown by A. Renda et al. in [their paper](https://people.csail.mit.edu/renda/llm-sampling-paper). 
+My approach is different, instead of prompting the same model many times (without cleaning its context window), I prompt it once, record the number, and prompt it again with a empty context window. An empty context window means the AI's working memory is completely clean. I.e. it retaining no previous instructions.
+
+## Prompting LLMs
+I had some credits lying around for LLMGateway and decided to ask Chat-GPT 5.5, Claude Opus-4-8, and Gemini 3.5 flash to generate me some random numbers.
+Using default parameters (temperature and reasoning) I used the following system prompt:
+
+```
+You are an AI assistant that responds to every question in a particular format.
+
+Answer rules:
+- Your answer vocabulary is limited to number
+```
+
+I chose the above system prompt to avoid having to deal with responses of the format:
+
+```
+🎲 Your random number between 1 and 100 is:
+16
+If you want, I can generate more—or set specific rules (like no repeats, ranges, etc.).
+```
+
+Then, after the system prompt, I posed my question/prompt:
+
+```
+Generate a random number between 1 and 100.
+Answer:
+```
+
+I note the answer and repeated the question 500 times to get a distribution of numbers.
+
+## LLM random numbers between 1 and 100
+<img src="/images/2026/random-1-100.png" class="fit image">
+
+As you can see, all LLMs are really bad at picking random numbers.
+Chat GPT-5.5 prefers the number 47, which is picked almost 60% of the time. Claude Opus 4.8 only samples two numbers from 1 to 100, 42 (almost 68% of the time) and 47. 
+Gemini 3.5 Flash samples 57 and 73. In total these two are samples 93% of the time.
+
+Overall, we see LLMs are structurally biased towards popular random numbers, especially the number 42. In addition, to being really bad at sampling _random numbers_.
+
+
+## Repeating for range 1 to 10
+<img src="/images/2026/random-1-10.png" class="fit image">
+Maybe its the range that is causing the problem. 
+What if we ask LLMs to pick numbers in the range 1 to 10, where 42 is not a possibility. 
+No, it also does not work.
+Instead, we see that Chat GPT-5.5 and Claude Opus 4.8 pick the number 7 100% of the time!
+Talk about randomness 🙃
+Gemini 3.5 Flash is different, it picks number 4 a lot, over 80% of the time.
+
+## Limitations
+I only prompt LLMs to generate a single random number for each prompt, and not a larger sample/list of random numbers. Keeping the context window might mitigate some of the issues we observed above.
+In addition, even with the 'strict' prompt I use, some of the models return pure gibberish, such as ```number number number number number number number ...```
+
+Jokes aside, LLMs are autocomplete systems on steroids, and should not be used for these things. Or many other usecases, such as evaluating resumes, psychological assistance, etc.
+They are statistical models which output the likely tokens given a prompt. They have sever limitations.
+
